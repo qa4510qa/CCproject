@@ -10,21 +10,21 @@ import Info from './src/container/Info';
 import Main from './src/container/Main';
 import FutureClimate from './src/container/FutureClimate';
 import CropData from './src/container/CropData';
-import StartScreen from './src/container/startScreen';
-
+// import StartScreen from './src/container/startScreen';
+import AppConfig from './src/const/AppConfig.const';
 
 class App extends Component { 
   constructor(props){
     super(props);
     this.state = {
-      activeScreen:"",
+      activeScreen:"Main",
       start_year:2019,
       start_month:3,
       start_day:1,
       end_year:2019,
       end_month:5,
       end_day:31,
-      ip:""
+      ip:AppConfig.SERVER_IP,
     }
   } 
 
@@ -51,9 +51,9 @@ class App extends Component {
 
   render(){
     switch(this.state.activeScreen) {
-      case '':
-        return(<StartScreen ip={this.state.ip} setServerIP={this.setServerIP} switchScreen={(toScreen) => {this.switchScreen(toScreen)}}/>)
-        break;
+      // case '':
+      //   return(<StartScreen ip={this.state.ip} setServerIP={this.setServerIP} switchScreen={(toScreen) => {this.switchScreen(toScreen)}}/>)
+      //   break;
       case 'Info':
         return (<Info activeScreen={this.state.activeScreen} switchScreen={(toScreen) => {this.switchScreen(toScreen)}} />);
         break;
