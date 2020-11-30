@@ -15,8 +15,8 @@ class TimePicker extends Component {
           mode="date"
           placeholder="請選擇日期"
           format="YYYY-MM-DD"
-          minDate="2019-04-01"
-          maxDate="2019-06-30"
+          minDate="2020-07-01"
+          maxDate="2020-09-30"
           confirmBtnText="Confirm"
           cancelBtnText="Cancel"
           customStyles={{

@@ -14,9 +14,10 @@ import SetLocation from '../component/setLocation';
 import SetCrop from '../component/setCrop';
 import Tab from './Tab';
 import AnsClick from '../component/ansClick';
-import AnsDisplay from '../../ansDisplay';
-let list2 = [];
+import AnsDisplay from '../component/ansDisplay';
+import DataUpdate from '../component/dataUpdate';
 
+let list2 = [];
 
 export default class Main extends Component {
   constructor() {
@@ -30,11 +31,11 @@ export default class Main extends Component {
         "t":{"spinach":false,"tonghao":false,"jyelan":false,"bakchoy(sum)":false,"bakchoy(win)":false,"huangong":false,"amaranth":false,"lettuce":false,"headlettuce":false},
         "w":{"spinach":false,"tonghao":false,"jyelan":false,"bakchoy(sum)":false,"bakchoy(win)":false,"huangong":false,"amaranth":false,"lettuce":false,"headlettuce":false},
         "s":{"spinach":false,"tonghao":false,"jyelan":false,"bakchoy(sum)":false,"bakchoy(win)":false,"huangong":false,"amaranth":false,"lettuce":false,"headlettuce":false}},
-      start_year:2019,
-      start_month:4,
+      start_year:2020,
+      start_month:7,
       start_day:1,
-      end_year:2019,
-      end_month:6,
+      end_year:2020,
+      end_month:9,
       end_day:30,
       id_Crop:[],
       p:[],
@@ -183,7 +184,6 @@ export default class Main extends Component {
           location:this.state.location,
         },
       }),
-      
     })
     .then(response => response.json())
     .then((responseJson) => {
@@ -212,6 +212,32 @@ export default class Main extends Component {
     });
   }
 
+  onDataUpdate = () => {
+    fetch("http://cwbservice.zapto.org/seasonal/prp/?county=臺北市&yyyymm=201807")
+    .then((response) => response.text())
+    .then(function(response) {
+      console.log(response);
+    }).catch(function(err) {
+      console.error(err);
+    });
+      
+    // fetch("http://cwbservice.zapto.org/seasonal/prp/?county=臺北市&yyyymm=201601", {
+    //   method: 'GET',
+    //   body: JSON.stringify(data), // data can be `string` or {object}!
+    //   headers: new Headers({
+    //     'Content-Type': 'application/json'
+    //   })
+    // })
+    // .then(response => response.json())
+    // .then((responseJson) => {
+    //   console.log("test DataUpdate fetch")
+    //   console.log(responseJson);
+    // })
+    // .catch((error) =>{
+    //   console.error(error);
+    // });
+  }
+
   render() {
     const {switchScreen} = this.props; //一定要有大括號！！！
     return (
@@ -237,7 +263,11 @@ export default class Main extends Component {
               cropPrice={this.state.cropPrice}
               id_Crop={this.state.id_Crop} p={this.state.p} 
               t={this.state.t} w={this.state.w} s={this.state.s} />
-            <AnsClick onAnsClick={this.onAnsClick} />
+            <View>
+              <DataUpdate onDataUpdate={this.onDataUpdate} />
+              <View style={{flex:1}}></View>
+              <AnsClick onAnsClick={this.onAnsClick} />
+            </View>
             <AnsDisplay idCrop={list2} cropData={this.state.cropDataChinese} max_score={this.state.max_score} max_sequence={this.state.max_sequence} new_maxscore={this.state.new_maxscore}/>
             <View style={{backgroundColor:"gray",marginTop:10,padding:5}}>
               <Text style={[styles.remarkWords]}>氣候變遷創意實作競賽</Text>

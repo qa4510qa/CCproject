@@ -10,7 +10,7 @@ class ClimateDisplay extends Component {
 		return (
 			<View>
 				<View style={{flexDirection:"row",margin:2}}>
-					<Text style={[styles.climateDisplayTitle]}>日期</Text>
+					<Text style={[styles.climateDisplayTitle, flex=1.2]}>日期</Text>
 					<Text style={[styles.climateDisplayTitle]}>溫度</Text>
 					<Text style={[styles.climateDisplayTitle]}>降雨</Text>
 					<Text style={[styles.climateDisplayTitle]}>日照</Text>
@@ -26,9 +26,9 @@ class ClimateDisplay extends Component {
 				{future_weather
 				.filter(i => future_weather.indexOf(i)!==0)
 				.map((item,idx) => (
-					<View key={item+idx} style={{flexDirection:"row",borderColor:"gray",borderWidth:1,borderRadius:1,paddingLeft:8,paddingRight:5}}>
-						{item.map((element) => (
-							<Text key={item+element} style={{flex:1,fontSize:15,textAlign:"center"}}>{element}</Text>
+					<View key={item+"_"+idx} style={{flexDirection:"row",borderColor:"gray",borderWidth:1,borderRadius:1,paddingLeft:8,paddingRight:5}}>
+						{item.map((element,idx) => (
+							idx === 0 ?<Text key={item+"_"+element+"_"+idx} style={{flex:1.2,fontSize:15,textAlign:"center"}}>{element}</Text>:<Text key={item+"_"+element+"_"+idx} style={{flex:1,fontSize:15,textAlign:"center"}}>{element}</Text>
 						))}
 					</View>
 				))}

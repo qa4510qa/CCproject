@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text} from 'react-native';
-import styles from './src/component/style';
-import AnsCropItem from './src/component/ansCropItem';
-import AnsSenItem from './src/component/ansSenItem';
+import styles from './style';
+import AnsCropItem from './ansCropItem';
+import AnsSenItem from './ansSenItem';
 import { materialDense } from 'react-native-typography';
 
 

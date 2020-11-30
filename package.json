@@ -10,9 +10,10 @@
   "dependencies": {
     "react": "16.8.3",
     "react-native": "0.59.2",
+    "react-native-chart-kit": "^3.13.0",
     "react-native-datepicker": "^1.7.2",
-    "react-native-modal-selector": "^1.0.3",
-    "react-native-typography": "^1.4.0"
+    "react-native-modal-selector": "^1.1.5",
+    "react-native-typography": "^1.4.1"
   },
   "devDependencies": {
     "@babel/core": "7.4.0",

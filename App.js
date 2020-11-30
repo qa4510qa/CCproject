@@ -17,13 +17,13 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      activeScreen:"Main",
-      start_year:2019,
-      start_month:3,
+      activeScreen:'',
+      start_year:2020,
+      start_month:7,
       start_day:1,
-      end_year:2019,
-      end_month:5,
-      end_day:31,
+      end_year:2020,
+      end_month:9,
+      end_day:30,
       ip:AppConfig.SERVER_IP,
     }
   } 
